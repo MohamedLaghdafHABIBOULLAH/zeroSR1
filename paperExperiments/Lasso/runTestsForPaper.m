@@ -20,6 +20,7 @@ code). You can download it from: https://github.com/stephenbeckr/L-BFGS-B-C
 Unpack it somewhere and run lbfgsb_C/Matlab/compile_mex.m
 %}
 addpath ~/Repos/lbfgsb_C/Matlab
+addpath ~/Documents/Github_PFE/zeroSR1/proxes
 %% ASA
 %{
 http://users.clas.ufl.edu/hager/papers/Software/
@@ -135,7 +136,7 @@ gradSimple  = @(w) Q*w - c; % doesn't include non-smooth portion
 % for L-BFGS-B, we will add to gradSimple, since we have made new smooth terms
     
 % for SR1
-prox    = @(x0,d,l) prox_l1_rank1( x0, d, l, lambda );
+prox    = @(x0,d,l) prox_rank1_l1( x0, d, l, lambda );
 
 % Setup operators for L-BFGS-B
 pos     = @(w) w(1:N,:);
